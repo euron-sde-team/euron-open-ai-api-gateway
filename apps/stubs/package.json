@@ -1,0 +1,17 @@
+{
+  "name": "@open-gateway/stubs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dependency-free deterministic stand-ins for the upstream AI providers (OpenAI-compatible and Anthropic) and the payment gateways (Stripe, Razorpay), for development, CI and the integration tests.",
+  "type": "module",
+  "main": "server.mjs",
+  "types": "server.d.mts",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "vitest": "^4.1.12"
+  }
+}

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">The life of one gateway request</title>
+  <desc id="desc">Nine steps in order: authenticate, resolve the model, key controls, price, monthly budget, rate limits, reserve the worst case, route with failover, settle. Steps one to seven refuse without calling a provider or charging. Step eight fails over on retryable errors before the first byte. Step nine debits the actual price in one transaction with the request row and the ledger entry.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#9CA3AF"/></marker>
+    <style>
+      .bg{fill:#FFFFFF}
+      .st{fill:#F7F8FA;stroke:#D6DAE1;stroke-width:1.2}
+      .pv{fill:#FFF3EE;stroke:#F2B49C;stroke-width:1.2}
+      .n{font:700 12px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#B93C14}
+      .h{font:600 14px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#111827}
+      .t{font:12px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#4B5563}
+      .e{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#9F1239}
+      .s{font:600 12px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#6B7280;letter-spacing:.04em}
+      .ln{stroke:#9CA3AF;stroke-width:1.4;fill:none}
+      .band{fill:#F3F4F6}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="430"/>
+  <rect class="band" x="20" y="24" width="866" height="26" rx="6"/>
+  <text class="s" x="34" y="42">REFUSED HERE: NO PROVIDER CALL, NOTHING CHARGED</text>
+  <text class="s" x="905" y="42">PROVIDER CALLED</text>
+
+  <g>
+    <rect class="st" x="20" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="34" y="94">1</text><text class="h" x="34" y="116">Authenticate</text>
+    <text class="t" x="34" y="138">key hash, cached</text><text class="t" x="34" y="156">context, status</text>
+    <text class="e" x="34" y="184">401</text><text class="e" x="34" y="202">403</text>
+  </g>
+  <g>
+    <rect class="st" x="145" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="159" y="94">2</text><text class="h" x="159" y="116">Resolve</text>
+    <text class="t" x="159" y="138">id or alias,</text><text class="t" x="159" y="156">kind fits endpoint</text>
+    <text class="e" x="159" y="184">404</text><text class="e" x="159" y="202">400</text>
+  </g>
+  <g>
+    <rect class="st" x="270" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="284" y="94">3</text><text class="h" x="284" y="116">Key controls</text>
+    <text class="t" x="284" y="138">model allow-list,</text><text class="t" x="284" y="156">IP allow-list</text>
+    <text class="e" x="284" y="184">403</text>
+  </g>
+  <g>
+    <rect class="st" x="395" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="409" y="94">4</text><text class="h" x="409" y="116">Price</text>
+    <text class="t" x="409" y="138">margin by</text><text class="t" x="409" y="156">precedence,</text><text class="t" x="409" y="174">worst case</text>
+  </g>
+  <g>
+    <rect class="st" x="520" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="534" y="94">5</text><text class="h" x="534" y="116">Budget</text>
+    <text class="t" x="534" y="138">key's monthly</text><text class="t" x="534" y="156">spend</text>
+    <text class="e" x="534" y="184">402</text>
+  </g>
+  <g>
+    <rect class="st" x="645" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="659" y="94">6</text><text class="h" x="659" y="116">Rate limits</text>
+    <text class="t" x="659" y="138">RPM, TPM per key,</text><text class="t" x="659" y="156">concurrency</text>
+    <text class="e" x="659" y="184">429</text>
+  </g>
+  <g>
+    <rect class="st" x="770" y="70" width="114" height="150" rx="10"/>
+    <text class="n" x="784" y="94">7</text><text class="h" x="784" y="116">Reserve</text>
+    <text class="t" x="784" y="138">hold worst case</text><text class="t" x="784" y="156">in the wallet</text>
+    <text class="e" x="784" y="184">402</text>
+  </g>
+  <g>
+    <rect class="pv" x="905" y="70" width="130" height="150" rx="10"/>
+    <text class="n" x="919" y="94">8</text><text class="h" x="919" y="116">Route</text>
+    <text class="t" x="919" y="138">priority order,</text><text class="t" x="919" y="156">skip open circuits,</text><text class="t" x="919" y="174">fail over before</text><text class="t" x="919" y="192">the first byte</text>
+    <text class="e" x="919" y="212">502 503</text>
+  </g>
+  <g>
+    <rect class="pv" x="1050" y="70" width="130" height="150" rx="10"/>
+    <text class="n" x="1064" y="94">9</text><text class="h" x="1064" y="116">Settle</text>
+    <text class="t" x="1064" y="138">actual price,</text><text class="t" x="1064" y="156">request row,</text><text class="t" x="1064" y="174">USAGE ledger row:</text><text class="t" x="1064" y="192">one transaction</text>
+  </g>
+  <path class="ln" d="M134 145 H145 M259 145 H270 M384 145 H395 M509 145 H520 M634 145 H645 M759 145 H770 M884 145 H905 M1035 145 H1050"/>
+
+  <rect class="st" x="905" y="260" width="275" height="140" rx="10"/>
+  <text class="h" x="921" y="288">Routes of one model</text>
+  <text class="t" x="921" y="312">1. primary (sets the list price)</text>
+  <text class="t" x="921" y="332">2. backup</text>
+  <text class="t" x="921" y="352">Retryable: network, timeout, 408,</text>
+  <text class="t" x="921" y="370">409, 425, 429, 5xx</text>
+  <text class="t" x="921" y="388">Circuit: 5 failures / 60 s, open 30 s</text>
+  <path class="ln" d="M970 220 V256" marker-end="url(#a)"/>
+
+  <text class="h" x="20" y="288">Always</text>
+  <text class="t" x="20" y="312">x-request-id: req_... on every response; the same id on the request row and the ledger entry.</text>
+  <text class="t" x="20" y="334">Errors in the OpenAI envelope, or the Anthropic one on /v1/messages.</text>
+  <text class="t" x="20" y="356">A failure at step 8 releases the hold and records a failed request priced at zero.</text>
+  <text class="t" x="20" y="378">A stream cut after its first byte bills an estimate, marked estimated and stream_interrupted.</text>
+</svg>

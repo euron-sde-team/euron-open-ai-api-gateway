@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="t d">
+  <title id="t">Euron Open AI API Gateway</title>
+  <desc id="d">Euron Open AI API Gateway: one API key for many AI models. OpenAI and Anthropic compatible, priced per model with the operator's margin, paid from one balance topped up in US dollars or Indian rupees, with failover, rate limits, key controls and an admin console.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#16100E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#EE5A24" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#EE5A24" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="r"><rect width="1280" height="360" rx="24"/></clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="1280" height="360" fill="url(#bg)"/>
+    <circle cx="860" cy="180" r="170" fill="url(#glow)"/>
+
+    <g transform="translate(72 70)">
+      <rect width="56" height="56" rx="16" fill="#F5F7FA"/>
+      <path d="M17.5 28 C26 28 26 16.5 36.5 16.5 M17.5 28 C26 28 26 39.5 36.5 39.5" fill="none" stroke="#0B1220" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M17.5 28 H36.5" fill="none" stroke="#EE5A24" stroke-width="3.2" stroke-linecap="round"/>
+      <circle cx="15.5" cy="28" r="4.5" fill="#0B1220"/>
+      <circle cx="39.5" cy="16.5" r="3.5" fill="#0B1220"/>
+      <circle cx="39.5" cy="28" r="4" fill="#EE5A24"/>
+      <circle cx="39.5" cy="39.5" r="3.5" fill="#0B1220"/>
+    </g>
+    <text x="144" y="110" font-family="Bricolage Grotesque, Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="600" fill="#F5F7FA">Euron Open AI API Gateway</text>
+
+    <text x="72" y="190" font-family="Bricolage Grotesque, Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#FFFFFF" letter-spacing="-1">One API key. Every model.</text>
+    <text x="72" y="232" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="19" fill="#C7CDD8">OpenAI and Anthropic compatible, priced per model with your margin,</text>
+    <text x="72" y="258" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="19" fill="#C7CDD8">paid from one balance topped up in dollars or rupees.</text>
+    <text x="72" y="310" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#F28B63" letter-spacing="1.6">FAILOVER  ·  RATE LIMITS  ·  KEY CONTROLS  ·  STRIPE + RAZORPAY  ·  ADMIN</text>
+
+    <g font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" transform="translate(44 0)">
+      <g fill="none" stroke-linecap="round">
+        <path d="M800 180 C900 180 900 70 1000 70" stroke="#5B6474" stroke-width="2.2"/>
+        <path d="M800 180 C900 180 900 125 1000 125" stroke="#5B6474" stroke-width="2.2"/>
+        <path d="M800 180 H1000" stroke="#EE5A24" stroke-width="3"/>
+        <path d="M800 180 C900 180 900 235 1000 235" stroke="#5B6474" stroke-width="2.2"/>
+        <path d="M800 180 C900 180 900 290 1000 290" stroke="#5B6474" stroke-width="2.2"/>
+        <path d="M700 180 H800" stroke="#EE5A24" stroke-width="3"/>
+      </g>
+      <rect x="640" y="156" width="120" height="48" rx="12" fill="#F5F7FA"/>
+      <text x="700" y="186" text-anchor="middle" font-size="15" font-weight="700" fill="#0B1220" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">gw-...</text>
+      <circle cx="800" cy="180" r="9" fill="#EE5A24"/>
+      <g font-size="14" fill="#E5E8EE">
+        <circle cx="1004" cy="70" r="6" fill="#C7CDD8"/><text x="1020" y="75">OpenAI-compatible</text>
+        <circle cx="1004" cy="125" r="6" fill="#C7CDD8"/><text x="1020" y="130">Anthropic</text>
+        <circle cx="1004" cy="180" r="7" fill="#EE5A24"/><text x="1020" y="185" font-weight="600" fill="#FFFFFF">Gemini</text>
+        <circle cx="1004" cy="235" r="6" fill="#C7CDD8"/><text x="1020" y="240">Groq, Together</text>
+        <circle cx="1004" cy="290" r="6" fill="#C7CDD8"/><text x="1020" y="295">Your own vLLM</text>
+      </g>
+    </g>
+  </g>
+</svg>

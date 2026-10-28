@@ -1,0 +1,36 @@
+# Copy to terraform.tfvars (git-ignored) and replace every placeholder.
+region      = "us-east-1"
+name_prefix = "gw-prod" # 3-24 lowercase letters, digits, hyphens
+
+domain          = "app.example.com" # one host: the web console, /api/* and /v1/*
+route53_zone_id = "<ROUTE53_HOSTED_ZONE_ID>" # automatic certificates + DNS; or set certificate_arn instead
+# mail_domain   = "example.com"              # defaults to domain
+
+# image_tag is passed by `make aws-deploy` (the git commit); set it here to pin a release.
+# image_tag = "0.1.0"
+
+# alarm_email = "oncall@example.com"
+
+# Graviton tasks (cheaper). Build the images to match: PLATFORM=linux/arm64 make aws-deploy
+# cpu_architecture = "ARM64"
+
+# Provider API keys are not set here: sign in as an administrator and add them in
+# /admin. They are encrypted with CREDENTIALS_KEY, which Terraform generates into
+# <name_prefix>/gateway together with API_KEY_PEPPER.
+
+# The base URL developers point their SDK at. Default: https://<domain>/v1
+# gateway_public_url = "https://api.example.com/v1"
+
+# Payments and FX. <name_prefix>/billing is created with "set-me" placeholders (the
+# app treats them as unset), which keeps the keys out of Terraform state. Put the ones
+# you use in by hand:
+#   aws secretsmanager put-secret-value --secret-id <name_prefix>/billing \
+#     --secret-string '{"STRIPE_SECRET_KEY":"<key>","STRIPE_WEBHOOK_SECRET":"<secret>","RAZORPAY_KEY_ID":"set-me","RAZORPAY_KEY_SECRET":"set-me","RAZORPAY_WEBHOOK_SECRET":"set-me","FX_API_KEY":"set-me"}'
+# then roll the api and worker (make aws-deploy, or force a new deployment). Webhook
+# endpoints to register: https://<domain>/api/webhooks/stripe and
+# https://<domain>/api/webhooks/razorpay. Or pass them here (they then land in state):
+# billing_secrets = { STRIPE_SECRET_KEY = "<key>", STRIPE_WEBHOOK_SECRET = "<secret>" }
+
+# INR per USD rate: exchangerate (no key), openexchangerates (FX_API_KEY) or fixed.
+# fx_provider          = "exchangerate"
+# fx_fixed_inr_per_usd = 85

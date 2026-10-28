@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Euron Open AI API Gateway in context</title>
+  <desc id="desc">Developers' code calls the API's /v1 gateway with an API key. Browsers use the Next.js web app, which proxies /api and /v1 to the same API. The API and a BullMQ worker share PostgreSQL and Redis. The API routes each request to AI providers with failover, opens checkouts with Stripe and Razorpay and receives their signed webhooks. The worker probes providers, fetches the INR rate and sends mail.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6B7280"/></marker>
+    <marker id="v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#D9481B"/></marker>
+    <style>
+      .bg{fill:#FFFFFF}
+      .box{fill:#F7F8FA;stroke:#D6DAE1;stroke-width:1.2}
+      .sys{fill:#FFF3EE;stroke:#F2B49C;stroke-width:1.2}
+      .ext{fill:#FFFFFF;stroke:#C9CDD6;stroke-width:1.2;stroke-dasharray:5 4}
+      .h{font:600 16px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#111827}
+      .t{font:13px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#4B5563}
+      .s{font:600 12px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#6B7280;letter-spacing:.04em}
+      .l{font:12px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#6B7280}
+      .lv{font:600 12px Inter,Segoe UI,Helvetica,Arial,sans-serif;fill:#B93C14}
+      .ln{stroke:#9CA3AF;stroke-width:1.4;fill:none}
+      .lnv{stroke:#D9481B;stroke-width:1.8;fill:none}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="620"/>
+
+  <rect class="ext" x="30" y="100" width="230" height="120" rx="12"/>
+  <text class="h" x="50" y="135">Developers' code</text>
+  <text class="t" x="50" y="160">OpenAI or Anthropic SDK,</text>
+  <text class="t" x="50" y="180">curl, any HTTP client</text>
+  <text class="t" x="50" y="200">Bearer gw-... or x-api-key</text>
+
+  <rect class="ext" x="30" y="390" width="230" height="110" rx="12"/>
+  <text class="h" x="50" y="425">Browser</text>
+  <text class="t" x="50" y="450">Developer console</text>
+  <text class="t" x="50" y="470">and /admin</text>
+
+  <rect class="sys" x="310" y="40" width="570" height="540" rx="16"/>
+  <text class="s" x="330" y="68">YOUR DEPLOYMENT</text>
+
+  <rect class="box" x="340" y="100" width="230" height="160" rx="12"/>
+  <text class="h" x="360" y="132">API (Express)</text>
+  <text class="t" x="360" y="157">/v1 gateway: auth, limits,</text>
+  <text class="t" x="360" y="177">reserve, route, settle</text>
+  <text class="t" x="360" y="201">/api console and admin</text>
+  <text class="t" x="360" y="225">/api/webhooks: Stripe,</text>
+  <text class="t" x="360" y="245">Razorpay (signed)</text>
+
+  <rect class="box" x="340" y="400" width="230" height="110" rx="12"/>
+  <text class="h" x="360" y="432">Web app (Next.js)</text>
+  <text class="t" x="360" y="457">Console and admin;</text>
+  <text class="t" x="360" y="477">proxies /api and /v1</text>
+
+  <rect class="box" x="620" y="150" width="230" height="58" rx="12"/>
+  <text class="h" x="640" y="185">PostgreSQL</text>
+  <text class="l" x="740" y="185">money, catalogue</text>
+  <rect class="box" x="620" y="226" width="230" height="58" rx="12"/>
+  <text class="h" x="640" y="261">Redis</text>
+  <text class="l" x="700" y="261">limits, circuits, queues</text>
+
+  <rect class="box" x="620" y="400" width="230" height="110" rx="12"/>
+  <text class="h" x="640" y="432">Worker (BullMQ)</text>
+  <text class="t" x="640" y="457">Sweeper, health probes,</text>
+  <text class="t" x="640" y="477">FX sync, low-balance mail,</text>
+  <text class="t" x="640" y="497">retention</text>
+
+  <rect class="ext" x="920" y="80" width="250" height="120" rx="12"/>
+  <text class="h" x="940" y="113">AI providers</text>
+  <text class="t" x="940" y="138">OpenAI-compatible (OpenAI,</text>
+  <text class="t" x="940" y="158">Groq, Together, vLLM, ...),</text>
+  <text class="t" x="940" y="178">Anthropic, Gemini</text>
+
+  <rect class="ext" x="920" y="250" width="250" height="90" rx="12"/>
+  <text class="h" x="940" y="283">Payments</text>
+  <text class="t" x="940" y="308">Stripe (USD)</text>
+  <text class="t" x="940" y="326">Razorpay (INR)</text>
+
+  <rect class="ext" x="920" y="380" width="250" height="56" rx="12"/>
+  <text class="h" x="940" y="414">FX rate API</text>
+  <rect class="ext" x="920" y="466" width="250" height="56" rx="12"/>
+  <text class="h" x="940" y="500">SES or SMTP</text>
+
+  <path class="lnv" d="M260 160 H336" marker-end="url(#v)"/>
+  <text class="lv" x="268" y="150">/v1</text>
+  <path class="ln" d="M260 445 H336" marker-end="url(#a)"/>
+  <path class="ln" d="M455 400 V264" marker-end="url(#a)"/>
+  <text class="l" x="463" y="335">/api, /v1</text>
+  <path class="lnv" d="M570 118 H916" marker-end="url(#v)"/>
+  <text class="lv" x="660" y="110">routes with failover</text>
+  <path class="ln" d="M570 179 H616" marker-end="url(#a)"/>
+  <path class="ln" d="M570 240 H616" marker-end="url(#a)"/>
+  <path class="ln" d="M580 260 V318 H916" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text class="l" x="660" y="310">checkout, signed webhooks</text>
+  <path class="ln" d="M820 400 V288" marker-end="url(#a)"/>
+  <path class="ln" d="M850 418 H895 V190 H916" marker-end="url(#a)"/>
+  <text class="l" x="860" y="360" transform="rotate(-90 885 360)">probes</text>
+  <path class="ln" d="M850 450 H916" marker-end="url(#a)"/>
+  <path class="ln" d="M850 494 H916" marker-end="url(#a)"/>
+</svg>

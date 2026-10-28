@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">AWS deployment</title>
+  <desc id="desc">AWS deployment: callers and browsers, CloudFront and WAF (optional), one load balancer with a 300 second idle timeout routing /api and /v1 to the api service and everything else to web, ECS Fargate tasks for web, api, worker and one-off migrate and admin tasks in private subnets, RDS PostgreSQL 16, ElastiCache Redis, SES, Secrets Manager, KMS and CloudWatch. The api calls AI providers and payment gateways through NAT and relays streams to callers.</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; }
+    .acc { fill: #FFF3EE; stroke: #D9481B; stroke-width: 1.6; }
+    .zone { fill: none; stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 6 5; }
+    .h { font: 600 20px system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #0f172a; }
+    .t { font: 600 15px system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #0f172a; }
+    .s { font: 13px system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #475569; }
+    .m { font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #0f172a; }
+    .k { font: 600 13px system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #B93C14; }
+    .ln { stroke: #64748b; stroke-width: 1.5; fill: none; }
+    .ld { stroke: #64748b; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+    .la { stroke: #D9481B; stroke-width: 1.8; fill: none; }
+    .ah { fill: #64748b; }
+    .aa { fill: #D9481B; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0b1220; }
+      .box { fill: #111a2b; stroke: #2b3a55; }
+      .acc { fill: #33170F; stroke: #F27A4F; }
+      .zone { stroke: #475569; }
+      .h, .t, .m { fill: #e2e8f0; }
+      .s { fill: #94a3b8; }
+      .k { fill: #F7A07E; }
+      .ln, .ld { stroke: #7c8aa5; }
+      .ah { fill: #7c8aa5; }
+      .la { stroke: #F27A4F; }
+      .aa { fill: #F27A4F; }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aa" d="M0 0L10 5L0 10z"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="720" rx="14"/>
+  <text class="h" x="40" y="48">AWS deployment</text>
+  <text class="s" x="40" y="72">One Terraform module (infra/terraform/modules/deployment); envs/aws-dev and envs/aws-prod pick sizes and safety switches.</text>
+  <rect class="box" x="40" y="110" width="180" height="70" rx="10"/>
+  <text class="t" x="56" y="136">Browser</text>
+  <text class="s" x="56" y="157">SDKs and console</text>
+  <rect class="box" x="260" y="110" width="200" height="70" rx="10"/>
+  <text class="t" x="276" y="136">CloudFront + WAF</text>
+  <text class="s" x="276" y="157">optional (enable_cdn)</text>
+  <rect class="acc" x="260" y="220" width="200" height="150" rx="10"/>
+  <text class="t" x="276" y="246">Load balancer</text>
+  <text class="s" x="276" y="267">one host, HTTPS</text>
+  <text class="s" x="276" y="287">idle timeout 300 s</text>
+  <text class="m" x="276" y="307">/api /v1 /up: api</text>
+  <text class="m" x="276" y="327">else: web</text>
+  <path class="la" d="M220 145 L258 145" marker-end="url(#b)"/>
+  <path class="la" d="M360 180 L360 218" marker-end="url(#b)"/>
+  <rect class="zone" x="500" y="100" width="360" height="470" rx="14"/>
+  <text class="t" x="520" y="126">Private subnets, ECS Fargate</text>
+  <rect class="box" x="530" y="140" width="300" height="70" rx="10"/>
+  <text class="t" x="546" y="166">web</text>
+  <text class="s" x="546" y="187">Next.js standalone, /env.js, CSP</text>
+  <rect class="acc" x="530" y="230" width="300" height="90" rx="10"/>
+  <text class="t" x="546" y="256">api</text>
+  <text class="s" x="546" y="277">/v1 gateway, /api console</text>
+  <text class="s" x="546" y="297">payment webhooks, /api/ready</text>
+  <rect class="box" x="530" y="340" width="300" height="70" rx="10"/>
+  <text class="t" x="546" y="366">worker</text>
+  <text class="s" x="546" y="387">BullMQ: sweeper, probes, FX, mail</text>
+  <rect class="box" x="530" y="430" width="300" height="70" rx="10"/>
+  <text class="t" x="546" y="456">migrate, admin</text>
+  <text class="s" x="546" y="477">one-off tasks on the api image</text>
+  <text class="s" x="530" y="530">streams up to the idle timeout</text>
+  <text class="s" x="530" y="550">read-only root, no public IPs</text>
+  <path class="ln" d="M460 250 L528 178" marker-end="url(#a)"/>
+  <path class="la" d="M460 300 L528 275" marker-end="url(#b)"/>
+  <rect class="box" x="900" y="110" width="260" height="62" rx="10"/>
+  <text class="t" x="916" y="136">RDS PostgreSQL 16</text>
+  <text class="s" x="916" y="157">Multi-AZ in prod, TLS, KMS</text>
+  <rect class="box" x="900" y="182" width="260" height="62" rx="10"/>
+  <text class="t" x="916" y="208">ElastiCache Redis</text>
+  <text class="s" x="916" y="229">limits, circuits, jobs; TLS</text>
+  <rect class="box" x="900" y="254" width="260" height="62" rx="10"/>
+  <text class="t" x="916" y="280">AI providers, payments</text>
+  <text class="s" x="916" y="301">failover routes; Stripe, Razorpay</text>
+  <rect class="box" x="900" y="326" width="260" height="62" rx="10"/>
+  <text class="t" x="916" y="352">SES v2</text>
+  <text class="s" x="916" y="373">account and low-balance mail</text>
+  <rect class="box" x="900" y="398" width="260" height="62" rx="10"/>
+  <text class="t" x="916" y="424">Secrets Manager</text>
+  <text class="s" x="916" y="445">app, totp, credentials, payments</text>
+  <rect class="box" x="900" y="470" width="260" height="62" rx="10"/>
+  <text class="t" x="916" y="496">KMS, CloudWatch</text>
+  <text class="s" x="916" y="517">one key; logs, alarms</text>
+  <path class="ln" d="M830 255 L898 141" marker-end="url(#a)"/>
+  <path class="ln" d="M830 267 L898 213" marker-end="url(#a)"/>
+  <path class="ln" d="M830 279 L898 285" marker-end="url(#a)"/>
+  <path class="ln" d="M830 291 L898 357" marker-end="url(#a)"/>
+  <path class="ln" d="M830 303 L898 429" marker-end="url(#a)"/>
+  <rect class="zone" x="40" y="600" width="1120" height="100" rx="12"/>
+  <text class="t" x="60" y="630">Sizes by environment</text>
+  <text class="s" x="60" y="654">aws-dev: api 1 to 2, worker 1, web 1 to 2 tasks; single-AZ RDS, one Redis node, one NAT, CDN off by default.</text>
+  <text class="s" x="60" y="676">aws-prod: api 2 to 10, worker 2 to 6, web 2 to 6 tasks; Multi-AZ RDS, two Redis nodes with failover, a NAT per AZ, CDN and WAF on.</text>
+</svg>
